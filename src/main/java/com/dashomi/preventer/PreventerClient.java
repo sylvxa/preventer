@@ -18,7 +18,6 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.Identifier;
-import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,9 +45,9 @@ public class PreventerClient implements ClientModInitializer {
     public void onInitializeClient() {
         // Register keybinds
         KeyMapping.Category PREVENTER_CATEGORY = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("preventer", "category"));
-        overrideKey = new KeyMapping("key.preventer.overrideKey", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_R, PREVENTER_CATEGORY);
-        configKey = new KeyMapping("key.preventer.configKey", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_I, PREVENTER_CATEGORY);
-        toggleKey = new KeyMapping("key.preventer.toggleKey", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, PREVENTER_CATEGORY);
+        overrideKey = new KeyMapping("key.preventer.overrideKey", InputConstants.Type.KEYBOARD, InputConstants.KEY_R, PREVENTER_CATEGORY);
+        configKey = new KeyMapping("key.preventer.configKey", InputConstants.Type.KEYBOARD, InputConstants.KEY_I, PREVENTER_CATEGORY);
+        toggleKey = new KeyMapping("key.preventer.toggleKey", InputConstants.Type.KEYBOARD, InputConstants.UNKNOWN.getValue(), PREVENTER_CATEGORY);
         KeyMappingHelper.registerKeyMapping(overrideKey);
         KeyMappingHelper.registerKeyMapping(configKey);
         KeyMappingHelper.registerKeyMapping(toggleKey);

@@ -21,7 +21,7 @@ import net.minecraft.world.entity.animal.wolf.Wolf;
 import net.minecraft.world.entity.boss.enderdragon.EndCrystal;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.decoration.painting.Painting;
-import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Enderman;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.spider.Spider;
@@ -118,7 +118,7 @@ public class AttackEntityEvent {
 
             if (PreventerClient.config.preventNeutralMobAttacking != PreventNeutralMobAttackingConfig.OFF) {
                 if (PreventerClient.config.preventNeutralMobAttacking == PreventNeutralMobAttackingConfig.FULL && !(entity instanceof Piglin)) {
-                    if (isNeutralMob(entity) || entity instanceof Spider || entity instanceof EnderMan) {
+                    if (isNeutralMob(entity) || entity instanceof Spider || entity instanceof Enderman) {
                         sendActionPreventedMessage(playerEntity, Component.translatable("preventer.attacking.prevented.preventNeutralMobAttacking"));
                         return InteractionResult.FAIL;
                     }

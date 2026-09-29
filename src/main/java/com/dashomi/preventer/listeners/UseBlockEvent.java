@@ -3,6 +3,8 @@ package com.dashomi.preventer.listeners;
 import com.dashomi.preventer.PreventerClient;
 import com.dashomi.preventer.enums.PreventPlacingAfterEatingConfig;
 import com.dashomi.preventer.enums.PreventRocketUseConfig;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.BlockTransformer;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.tags.BlockTags;
@@ -27,6 +29,7 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 
@@ -47,7 +50,9 @@ public class UseBlockEvent {
 
             if (PreventerClient.config.preventLogStripping) {
                 if (handStack.is(ItemTags.AXES)) {
-                    if (AxeItem.STRIPPABLES.containsKey(targetBlock)) {
+                    if (canTransformBlock(handStack, world, blockHitResult)
+                            && !(targetBlock instanceof WeatheringCopper)
+                            && !HoneycombItem.WAX_OFF_BY_BLOCK.get().containsKey(targetBlock)) {
                         sendActionPreventedMessage(playerEntity, Component.translatable("preventer.interactions.prevented.preventLogStripping"));
                         return InteractionResult.FAIL;
                     }
@@ -56,7 +61,7 @@ public class UseBlockEvent {
 
             if (PreventerClient.config.preventPathCreation) {
                 if (handStack.is(ItemTags.SHOVELS)) {
-                    if (ShovelItem.FLATTENABLES.containsKey(targetBlock)) {
+                    if (canTransformBlock(handStack, world, blockHitResult)) {
                         sendActionPreventedMessage(playerEntity, Component.translatable("preventer.interactions.prevented.preventPathCreation"));
                         return InteractionResult.FAIL;
                     }
@@ -65,7 +70,7 @@ public class UseBlockEvent {
 
             if (PreventerClient.config.preventFarmlandCreation) {
                 if (handStack.is(ItemTags.HOES)) {
-                    if (HoeItem.TILLABLES.containsKey(targetBlock)) {
+                    if (canTransformBlock(handStack, world, blockHitResult)) {
                         sendActionPreventedMessage(playerEntity, Component.translatable("preventer.interactions.prevented.preventFarmlandCreation"));
                         return InteractionResult.FAIL;
                     }
@@ -307,6 +312,20 @@ public class UseBlockEvent {
         }
 
         return InteractionResult.PASS;
+    }
+
+    // mirrors the matching logic of BlockTransformer#transformBlock without applying the transformation
+    private static boolean canTransformBlock(ItemStack handStack, Level world, BlockHitResult blockHitResult) {
+        Holder<BlockTransformer> blockTransformer = handStack.get(DataComponents.BLOCK_TRANSFORMER);
+        if (blockTransformer == null) return false;
+
+        for (BlockTransformer.BlockTransformData transform : blockTransformer.value().transforms()) {
+            if (transform.disallowedFaces().contains(blockHitResult.getDirection())) continue;
+            if (transform.blockStateProvider().value().getOptionalState(world, RandomSource.create(), blockHitResult.getBlockPos()) != null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static boolean canNotInteractWithBlock(BlockState block, Player playerEntity, InteractionHand hand, BlockHitResult blockHitResult) {
