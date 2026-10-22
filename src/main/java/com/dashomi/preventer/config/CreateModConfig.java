@@ -185,6 +185,14 @@ public class  CreateModConfig {
                         .setSaveConsumer(value -> config.preventFenceGateInteraction = value)
                         .build())
 
+                .addEntry(entryBuilder.startBooleanToggle(
+                                Component.translatable("preventer.interactions.option.preventSnowballThrow"),
+                                config.preventSnowballThrow)
+                        .setDefaultValue(false)
+                        .setTooltip(Component.translatable("preventer.interactions.tooltip.preventSnowballThrow"))
+                        .setSaveConsumer(value -> config.preventSnowballThrow = value)
+                        .build())
+
                 .addEntry(entryBuilder.startTextDescription(
                                 Component.translatable("text.preventer.missingFeatures"))
                         .build());

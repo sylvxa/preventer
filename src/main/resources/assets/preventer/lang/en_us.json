@@ -111,6 +111,10 @@
   "preventer.interactions.tooltip.preventFenceGateInteraction": "Prevents the use of fence gates",
   "preventer.interactions.prevented.preventFenceGateInteraction": "§4Fence gate use prevented§4",
 
+  "preventer.interactions.option.preventSnowballThrow": "Prevent snowball throw",
+  "preventer.interactions.tooltip.preventSnowballThrow": "Prevents throwing snowballs",
+  "preventer.interactions.prevented.preventSnowballThrow": "§4Snowball throw prevented§4",
+
   "preventer.plants.option.preventGlowBerrieHarvesting": "Prevent glow berry harvesting",
   "preventer.plants.tooltip.preventGlowBerrieHarvesting": "Prevents you from harvesting Glow Berries",
   "preventer.plants.prevented.preventGlowBerrieHarvesting": "§4Glow berry harvesting was prevented§4",
@@ -183,7 +187,7 @@
 
   "preventer.breaking.option.preventJungleLogBreaking": "Prevent jungle log breaking",
   "preventer.breaking.tooltip.preventJungleLogBreaking": "Prevents you from breaking jungle log",
-  "preventer.breaking.prevented.preventJungleLogBreaking": "§4Jungle log breaking prevented§4",
+  "preventer.breaking.prevented.preventJungleLogBreaking": "§4Jungle logs breaking prevented§4",
 
   "preventer.breaking.option.preventBreakingWithWeapon": "Prevent breaking with weapons",
   "preventer.breaking.tooltip.preventBreakingWithWeapon": "Prevents you from breaking blocks with a sword, trident or mace",

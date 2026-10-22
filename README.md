@@ -48,6 +48,8 @@ Each module can be enabled or disabled individually in game via a config screen 
   - _Prevents equipping items with the curse of binding enchant_
 - Prevent fence gate toggling
   - _Prevents the use of fence gates_
+- Prevent snowball throw
+  - _Prevents throwing snowballs_
 </details>
 
 <details>
