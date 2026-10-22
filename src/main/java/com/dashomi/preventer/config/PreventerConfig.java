@@ -64,6 +64,7 @@ public class PreventerConfig implements ConfigData {
     public boolean preventCarpetBreaking = false;
     public boolean preventSaplingBreaking = false;
     public boolean preventImmatureAmethystBreaking = false;
+    public boolean preventJungleLogBreaking = false;
     public boolean preventBreakingWithWeapon = false;
     public boolean preventBreakingWithoutFortune = false;
 

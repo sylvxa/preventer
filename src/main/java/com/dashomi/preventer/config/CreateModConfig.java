@@ -334,6 +334,14 @@ public class  CreateModConfig {
                         .build())
 
                 .addEntry(entryBuilder.startBooleanToggle(
+                                Component.translatable("preventer.breaking.option.preventJungleLogBreaking"),
+                                config.preventJungleLogBreaking)
+                        .setDefaultValue(false)
+                        .setTooltip(Component.translatable("preventer.breaking.tooltip.preventJungleLogBreaking"))
+                        .setSaveConsumer(value -> config.preventJungleLogBreaking = value)
+                        .build())
+
+                .addEntry(entryBuilder.startBooleanToggle(
                                 Component.translatable("preventer.breaking.option.preventBreakingWithWeapon"),
                                 config.preventBreakingWithWeapon)
                         .setDefaultValue(false)
