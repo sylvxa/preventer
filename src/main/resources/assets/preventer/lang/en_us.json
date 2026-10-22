@@ -107,6 +107,9 @@
   "preventer.interactions.tooltip.preventCurseOfBindingEquip": "Prevents equipping items with the curse of binding enchant",
   "preventer.interactions.prevented.preventCurseOfBindingEquip": "§4Equipping a curse of binding item prevented§4",
 
+  "preventer.interactions.option.preventFenceGateInteraction": "Prevent fence gate toggling",
+  "preventer.interactions.tooltip.preventFenceGateInteraction": "Prevents the use of fence gates",
+  "preventer.interactions.prevented.preventFenceGateInteraction": "§4Fence gate use prevented§4",
 
   "preventer.plants.option.preventGlowBerrieHarvesting": "Prevent glow berry harvesting",
   "preventer.plants.tooltip.preventGlowBerrieHarvesting": "Prevents you from harvesting Glow Berries",

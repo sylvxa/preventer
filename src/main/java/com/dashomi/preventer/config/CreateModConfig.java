@@ -177,6 +177,14 @@ public class  CreateModConfig {
                         .setSaveConsumer(value -> config.preventCurseOfBindingEquip = value)
                         .build())
 
+                .addEntry(entryBuilder.startBooleanToggle(
+                                Component.translatable("preventer.interactions.option.preventFenceGateInteraction"),
+                                config.preventFenceGateInteraction)
+                        .setDefaultValue(false)
+                        .setTooltip(Component.translatable("preventer.interactions.tooltip.preventFenceGateInteraction"))
+                        .setSaveConsumer(value -> config.preventFenceGateInteraction = value)
+                        .build())
+
                 .addEntry(entryBuilder.startTextDescription(
                                 Component.translatable("text.preventer.missingFeatures"))
                         .build());

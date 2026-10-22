@@ -42,6 +42,7 @@ public class PreventerConfig implements ConfigData {
     public boolean preventItemFrameInteracting = false;
     public boolean preventRocketSpamming = false;
     public boolean preventCurseOfBindingEquip = false;
+    public boolean preventFenceGateInteraction = false;
 
     // Plants
     public boolean preventGlowBerrieHarvesting = false;
